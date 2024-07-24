@@ -8,7 +8,7 @@ Maven 3
 # Arquitectura  Hexagonal
 
 
-![Texto alternativo](https://github.com/Farius-red/prueba-Beyserin-Consulting-Daniel-jualiao/blob/master/imgDocumentacion/arquitectura.png)
+![Texto alternativo](https://github.com/juliaosistem/prueba-Beyserin-Consulting-Daniel-jualiao/blob/master/imgDocumentacion/arquitectura.png)
 
 En el paquete de infraestructura  esta la logica del negocio separada por dos paquetes
 
