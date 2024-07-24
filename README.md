@@ -75,7 +75,7 @@ node  v20.14.0
 npm version  10.7.0 
 angular version  18
 
-ir ala carpeta front users  
+ir ala carpeta front/template-test-ng/projects/test-app-ng/
 ejecutar npm install 
 ng serve 
 

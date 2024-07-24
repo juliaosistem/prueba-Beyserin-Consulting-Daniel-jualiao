@@ -7,11 +7,12 @@ import { CoreModule } from 'template-test-ng';
 import { UsuarioService } from '../../servicios/usuario.service';
 import { UsuarioResponse } from '../../models/UsuarioResponse';
 import { PlantillaResponse } from '../../models/plantillaResponse';
+import { InformacionUserComponent } from '../informacion-user/informacion-user.component';
 
 @Component({
   selector: 'app-inicio',
   standalone: true,
-  imports: [CoreModule,LayoutModule],
+  imports: [CoreModule,LayoutModule,InformacionUserComponent],
   templateUrl: './inicio.component.html',
   styleUrl: './inicio.component.scss'
 })
@@ -19,6 +20,9 @@ export class InicioComponent  implements OnInit{
 
   formUsuarios!: UntypedFormGroup;
   response: PlantillaResponse<UsuarioResponse> = new PlantillaResponse<UsuarioResponse>();
+  primerNombre: string ="";
+  primerApellido: string ="";
+  isFound: boolean = false;
 
   constructor(private formSvc:FormsAuthService,
     private userSvc: UsuarioService
@@ -62,8 +66,10 @@ export class InicioComponent  implements OnInit{
      if(this.formUsuarios.valid){
       this.userSvc.all(this.formUsuarios.get('numeroDocumento')?.value ,this.formUsuarios.get('tipoDocumento')?.value)
       .subscribe(res => {
-        if(res.rta ){
-          console.log("res: ", res);
+        if(res.rta && res.dataList ){
+          this.isFound = true;
+          this.primerApellido=res.dataList[0].primerApellido;
+          this.primerNombre = res.dataList[0].primerNombre;
         }
         
       })
