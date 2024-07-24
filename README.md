@@ -61,7 +61,7 @@ java -jar nombre del jar aqui.jar
 
 
 ir a google y poner esta url
-http://localhost:8080/documentacion
+http://localhost:8090/documentacion
 
 **Debe aparecer la interfase visual  de swagger**
 
