@@ -1,0 +1,26 @@
+<mat-grid-list cols="1" rowHeight="100px" class="centered-grid">
+        <form [formGroup]="formUsuarios">
+      <mat-grid-tile>
+        <mat-form-field appearance="fill">
+          <mat-label>Tipo Documento</mat-label>
+          <mat-select formControlName="tipoDocumento">
+            <mat-option value="C">Cédula Ciudadanía</mat-option>
+            <mat-option value="P">Pasaporte</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+  
+      <mat-grid-tile>
+        <mat-form-field appearance="fill">
+          <mat-label>Número Documento</mat-label>
+          <input matInput type="text" pattern="\d*" formControlName="formattedNumeroDocumento" (input)="formatNumber($event)">
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <button [disabled]="formUsuarios.invalid" mat-flat-button color="primary" (click)="buscar()">Buscar</button>
+      </mat-grid-tile>
+    </form>           
+</mat-grid-list>
+    
+  
+  

@@ -9,11 +9,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/user")
 @RequiredArgsConstructor
+@CrossOrigin("*")
 public  class UserController{
 
 
@@ -21,6 +21,7 @@ public  class UserController{
 
     @Operation(summary = "all users", description = "permite obtener lista de usuarios con filtros por tipo de documento y numero de documento ")
     @GetMapping("/all")
+
     public ResponseEntity<PlantillaResponse<UserResponse>> all(
             @RequestParam(value = "tipoDocumento", required = false) String tipoDocumento,
             @RequestParam(value = "numeroDocumento", required = false) String numeroDocumento) {

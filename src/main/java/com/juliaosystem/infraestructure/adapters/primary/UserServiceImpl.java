@@ -27,8 +27,14 @@ public class UserServiceImpl {
               if(tipoDocumento != null )
                   res = userServiceInter.byTipoDocumento(tipoDocumento ,userDTOList);
 
-             if (numeroDocumento != null )
-                 res= userServiceInter.byNumeroDocumento(numeroDocumento, userDTOList);
+             if (numeroDocumento != null  ) {
+                 assert res != null;
+                 if(res.getDataList().size() < userDTOList.size()){
+                     PlantillaResponse<UserResponse> finalRes = res;
+                     userDTOList =  userDTOList.stream().filter(userDTO -> finalRes.getDataList().contains(userDTO.getDatosUser())).toList();
+                 }
+                 res = userServiceInter.byNumeroDocumento(numeroDocumento, userDTOList);
+             }
 
              return res;
      }
