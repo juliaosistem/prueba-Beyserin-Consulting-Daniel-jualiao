@@ -15,6 +15,7 @@ import com.juliaosystem.utils.enums.ResponseType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -49,11 +50,11 @@ public class UserAdapter implements UserServiceInter {
                 return userResponses.buildResponse(ResponseType.GET.getCode(), UserResponse.builder().build(), userReponse);
             }else {
                 abtractError.logInfo("userAdapter.byTipoDocumento():" + MensajesRespuesta.NO_ENCONTRADO.getMensaje() + "de usuarios ---"+ OBJECT_MAPPER.writeValueAsString(userReponse));
-                return userResponses.buildResponse(ResponseType.NO_ENCONTRADO.getCode(), UserResponse.builder().build());
+                return userResponses.buildResponse(ResponseType.NO_ENCONTRADO.getCode(), UserResponse.builder().build() , Collections.emptyList());
             }
         }catch (Exception e){
             abtractError.logError(e);
-            return userResponses.buildResponse(ResponseType.FALLO.getCode() , UserResponse.builder().build());
+            return userResponses.buildResponse(ResponseType.FALLO.getCode() , UserResponse.builder().build() ,Collections.emptyList());
         }
     }
 
